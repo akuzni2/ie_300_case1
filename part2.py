@@ -1,3 +1,5 @@
+# In this file, data from FlightDelay.csv is used in a Naive Bayes classifier model to determine whether or not a flight will be delayed depending on its origin and destination.
+
 import csv
 import pandas as pd
 import matplotlib as mpl
@@ -78,11 +80,13 @@ def flight_delay_prediction(origin_input,destination_input,carrier_input):
     #counting total number of flights from that origin
     number_of_flights_from_carrier = number_of_N_carrier + number_of_Y_carrier
 
+
+    # This calculates the probability of a delay
     P_YES_DELAY = (P_y*
                             (number_of_Y_origin + 3*p_origin)/(number_of_flights_from_origin + 3)*
                             (number_of_Y_dest + 3*p_dest)/(number_of_flights_from_dest + 3)*
                             (number_of_Y_carrier + 3*p_carrier)/(number_of_flights_from_carrier + 3))
-
+    # This calculates the probability that there won't be a delay.
     P_NOT_DELAY = (P_n*
                             (number_of_N_origin + 3*p_origin)/(number_of_flights_from_origin + 3)*
                             (number_of_N_dest + 3*p_dest)/(number_of_flights_from_dest + 3)*
